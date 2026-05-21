@@ -1,5 +1,6 @@
 <template>
   <UniverseCanvas
+    :reset-signal="resetSignal"
     @hover-node="onHoverNode"
     @focus-node="onFocusNode"
   />
@@ -9,7 +10,7 @@
     @hover-node="onHoverNode"
     @focus-node="onFocusNode"
   />
-  <Compass />
+  <Compass @reset-camera="resetSignal++" />
   <TitleBlock />
   <Legend />
   <NodeTooltip
@@ -39,6 +40,7 @@ import NoiseOverlay from '@/components/NoiseOverlay.vue'
 import dataJson from '../resoures/data/data.json'
 const nodes = (dataJson as any).nodes as DataNode[]
 
+const resetSignal = ref(0)
 const hoveredNodeId = ref<string | null>(null)
 
 const tooltipNode = computed(() => {

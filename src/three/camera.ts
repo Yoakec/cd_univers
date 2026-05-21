@@ -107,7 +107,7 @@ export function createCameraStateMachine(
     setMode('FREE_ROAM')
     const t = target || new THREE.Vector3(0, -5, 0)
     controls.target.copy(t)
-    camera.position.set(0, 80, 150)
+    camera.position.set(0, 130, 45)
     controls.update()
   }
 

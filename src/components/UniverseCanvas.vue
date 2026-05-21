@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, watch } from 'vue'
 import * as THREE from 'three'
 import { CSS2DRenderer } from 'three/examples/jsm/renderers/CSS2DRenderer.js'
 import { MapControls } from 'three/examples/jsm/controls/MapControls.js'
@@ -25,6 +25,10 @@ const emit = defineEmits<{
   (e: 'hover-node', nodeId: string | null): void
   (e: 'focus-node', nodeId: string): void
   (e: 'camera-mode-change', mode: CameraMode): void
+}>()
+
+const props = defineProps<{
+  resetSignal: number
 }>()
 
 const canvasContainer = ref<HTMLElement | null>(null)
@@ -79,7 +83,7 @@ onMounted(async () => {
   controls.minDistance = 10
   controls.maxDistance = 300
   controls.maxPolarAngle = Math.PI * 0.7
-  controls.target.set(0, -5, 0)
+  controls.target.set(0, 20, 0)
 
   // Starfield
   starfield = createStarfield()
@@ -138,7 +142,8 @@ onMounted(async () => {
       },
       onClickEmpty: () => {
         if (cameraState.getMode() === 'LOCKED') {
-          cameraState.setMode('FREE_ROAM')
+          controls.target.set(0, 20, 0)
+        cameraState.setMode('FREE_ROAM')
         }
       },
     }
@@ -172,6 +177,10 @@ onMounted(async () => {
   animate()
 
   window.addEventListener('resize', onResize)
+})
+
+watch(() => props.resetSignal, () => {
+  cameraState?.resetCamera(new THREE.Vector3(0, 20, 0))
 })
 
 onUnmounted(() => {

@@ -9,8 +9,15 @@
       <span class="compass-label label-w">W</span>
       <span class="compass-label label-e">E</span>
     </div>
+    <button class="reset-btn" @click="$emit('reset-camera')">✦</button>
   </div>
 </template>
+
+<script setup lang="ts">
+defineEmits<{
+  (e: 'reset-camera'): void
+}>()
+</script>
 
 <style scoped>
 .compass {
@@ -90,5 +97,25 @@
   right: 6px;
   top: 50%;
   transform: translateY(-50%);
+}
+
+.reset-btn {
+  position: absolute;
+  top: 110px;
+  background: transparent;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 50%;
+  color: #FFD700;
+  font-size: 20px;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  text-shadow: 0 0 6px rgba(255, 215, 0, 0.4);
+}
+.reset-btn:hover {
+  border-color: #FFD700;
+  text-shadow: 0 0 12px rgba(255, 215, 0, 0.7);
 }
 </style>

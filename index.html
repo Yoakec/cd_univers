@@ -22,9 +22,19 @@
         --bronze: #C8A850;
         --cool-ivory: #C8D0D8;
         --ghost: #6B7B8D;
+        --gold-leaf: #FFD700;
       }
       * { margin: 0; padding: 0; box-sizing: border-box; }
       html, body { width: 100%; height: 100%; overflow: hidden; background: var(--void); }
+      body::after {
+        content: '';
+        position: fixed;
+        inset: 0;
+        border: 15px solid var(--gold-leaf);
+        opacity: 1;
+        pointer-events: none;
+        z-index: 200;
+      }
     </style>
   </head>
   <body>
