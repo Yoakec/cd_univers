@@ -1,0 +1,78 @@
+{
+  "description": "基于成都科幻地图原图比例提取的 2D 空间坐标系。TUOCON 为绝对中心 (0,0)。",
+  "nodes": [
+    { "id": "tuocon", "name": "TUOCON举办地 皇家花园", "address": "武侯区金雁路404号", "type": "CORE", "symbol": "✦", "x": 0, "y": 0 },
+    
+    { "id": "jinsha_museum", "name": "金沙遗址博物馆", "address": "青羊区金沙遗址路2号", "type": "MUSEUM", "symbol": "✤", "x": -5, "y": 20 },
+    { "id": "sc_tech_museum", "name": "四川科技馆", "address": "青羊区人民中路一段16号", "type": "MUSEUM", "symbol": "✤", "x": 15, "y": 10 },
+    { "id": "signature_bakery", "name": "签名饼屋（盐市口店）", "address": "锦江区大业路8号", "type": "SUPPLY", "symbol": "●", "x": 15, "y": -5 },
+    { "id": "fangsuo", "name": "方所", "address": "锦江区中纱帽街8号太古里B1层", "type": "BOOKSTORE", "symbol": "▼", "x": 30, "y": -5 },
+    { "id": "sf_world_mag", "name": "科幻世界杂志社", "address": "武侯区人民南路四段11号省科协大楼5-6层", "type": "COMPANY", "symbol": "▲", "x": 5, "y": -15 },
+    { "id": "eight_light_min", "name": "八光分文化", "address": "武侯区高升桥东路8-16号", "type": "COMPANY", "symbol": "▲", "x": -10, "y": -20 },
+    { "id": "tiantian_food", "name": "天添饭店家宴馆", "address": "武侯区玉林东街16号", "type": "SUPPLY", "symbol": "●", "x": 10, "y": -30 },
+
+    { "id": "alai_book", "name": "阿来书房", "address": "锦江区华兴东街16号西部文化产业中心5层", "type": "BOOKSTORE", "symbol": "▼", "x": 25, "y": 25 },
+    { "id": "iron_moon", "name": "钢铁月球", "address": "锦江区大科甲巷43号购次元K88商场", "type": "LOST_PLACE", "symbol": "▽", "x": 25, "y": -15 },
+    { "id": "ansible_cafe", "name": "安赛波咖啡馆", "address": "武侯区棕苑巷2号附19号", "type": "SUPPLY", "symbol": "●", "x": 20, "y": -25 },
+    { "id": "white_book", "name": "白读书屋", "address": "锦江区二环路东四段11号", "type": "BOOKSTORE", "symbol": "▼", "x": 40, "y": -25 },
+    { "id": "kuwen_book", "name": "库闻书店", "address": "武侯区科华北路141号附3号", "type": "LOST_PLACE", "symbol": "▽", "x": 35, "y": -35 },
+    { "id": "scifi_space_1", "name": "赛凡科幻空间1.0", "address": "武侯区领事馆路7号保利中心", "type": "OLD_SUPPLY", "symbol": "○", "x": 30, "y": -45 },
+
+    { "id": "comic_man", "name": "漫画人", "address": "成华区昭青路176-178号成都天府国际动漫城", "type": "BOOKSTORE", "symbol": "▼", "x": 55, "y": 45 },
+    { "id": "swpu_sf", "name": "西南石油大学科幻协会", "address": "新都区新都大道8号", "type": "ASSOCIATION", "symbol": "＊", "x": 85, "y": 85 },
+    { "id": "cdut_sf", "name": "成都理工大学奇点科普科幻协会", "address": "成华区二仙桥东三路1号", "type": "ASSOCIATION", "symbol": "＊", "x": 75, "y": 20 },
+    { "id": "sf_world_exhibit", "name": "科幻世界·无限超感艺术大展", "address": "成华区建设南路中段4号东郊记忆", "type": "EXHIBITION", "symbol": "◇", "x": 80, "y": 5 },
+    { "id": "cafe_42", "name": "42号书咖", "address": "成华区双店路196号附19号", "type": "OLD_SUPPLY", "symbol": "○", "x": 80, "y": -15 },
+
+    { "id": "wuhou_lib", "name": "武侯区图书馆科幻世界阅创中心", "address": "武侯区九兴大道137号8层", "type": "LIBRARY", "symbol": "▼", "x": -15, "y": -40 },
+    { "id": "yixing_culture", "name": "翌星文化", "address": "成都高新区益州大道北段388号城市春天", "type": "COMPANY", "symbol": "▲", "x": 25, "y": -60 },
+    { "id": "three_body_space", "name": "三体·四维空间", "address": "武侯区交子大道62号", "type": "EXHIBITION", "symbol": "◇", "x": 20, "y": -75 },
+    { "id": "cuit_sf", "name": "成都信息工程大学FoTo科幻协会", "address": "双流区学府路一段24号", "type": "ASSOCIATION", "symbol": "＊", "x": -25, "y": -75 },
+    
+    { "id": "scu_sf", "name": "四川大学科幻协会", "address": "双流区川大路二段2号", "type": "ASSOCIATION", "symbol": "＊", "x": 5, "y": -85 },
+    { "id": "scu_research", "name": "四川大学中国科幻研究院", "address": "双流区川大路二段2号", "type": "RESEARCH", "symbol": "◼︎", "x": 7, "y": -87 },
+    { "id": "starfish_create", "name": "海星创造", "address": "武侯区吉泰路666号", "type": "COMPANY", "symbol": "△", "x": 35, "y": -90 },
+    { "id": "mamenxi_lib", "name": "马门溪龙科幻图书馆", "address": "双流区华府大道300号棠湖泊林城94栋9号", "type": "LIBRARY", "symbol": "▼", "x": 10, "y": -100 },
+
+    { "id": "jincheng_sf", "name": "成都锦城学院玄凤科学幻想协会", "address": "郫都区西源大道1号", "type": "ASSOCIATION", "symbol": "＊", "x": -45, "y": 15 },
+    { "id": "uestc_sf", "name": "电子科技大学科幻协会", "address": "郫都区西源大道2006号", "type": "ASSOCIATION", "symbol": "＊", "x": -40, "y": 50 },
+    { "id": "sf_center", "name": "成都科幻创新城市建设与发展研究中心", "address": "郫都区西源大道2006号", "type": "RESEARCH", "symbol": "◼︎", "x": -38, "y": 48 },
+    { "id": "swjtu_sf", "name": "西南交通大学科幻协会", "address": "郫都区犀安路999号", "type": "ASSOCIATION", "symbol": "＊", "x": -5, "y": 65 },
+    { "id": "cd_sf_museum", "name": "成都科幻馆", "address": "郫都区科幻大道596号", "type": "MUSEUM", "symbol": "✤", "x": -70, "y": 75 },
+    
+    { "id": "cdutcm_sf", "name": "成都中医药大学科幻文化协会", "address": "温江区柳台大道1166号", "type": "ASSOCIATION", "symbol": "＊", "x": -90, "y": 10 },
+    { "id": "swufe_sf", "name": "西南财经大学FOUNDATION幻想联盟", "address": "温江区柳台大道555号", "type": "ASSOCIATION", "symbol": "＊", "x": -85, "y": -5 }
+  ],
+  "edges": [
+    { "source": "tuocon", "target": "scu_sf", "label": "中央辐线" },
+    { "source": "tuocon", "target": "cd_sf_museum", "label": "中央辐线" },
+    { "source": "tuocon", "target": "sf_world_mag", "label": "中央辐线" },
+    { "source": "tuocon", "target": "uestc_sf", "label": "中央辐线" },
+    { "source": "tuocon", "target": "fangsuo", "label": "商业地标" },
+    { "source": "tuocon", "target": "tiantian_food", "label": "近地补给" },
+    { "source": "uestc_sf", "target": "sf_center", "label": "同源" },
+    { "source": "uestc_sf", "target": "swjtu_sf", "label": "高校星群" },
+    { "source": "uestc_sf", "target": "cd_sf_museum", "label": "科幻走廊" },
+    { "source": "swjtu_sf", "target": "jincheng_sf", "label": "高校星群" },
+    { "source": "jincheng_sf", "target": "cdutcm_sf", "label": "高校星群" },
+    { "source": "cdutcm_sf", "target": "swufe_sf", "label": "温江双子" },
+    { "source": "cuit_sf", "target": "scu_sf", "label": "双流双子" },
+    { "source": "scu_sf", "target": "scu_research", "label": "同源" },
+    { "source": "cdut_sf", "target": "swpu_sf", "label": "东部链路" },
+    { "source": "fangsuo", "target": "white_book", "label": "书店航线" },
+    { "source": "white_book", "target": "kuwen_book", "label": "书店航线" },
+    { "source": "alai_book", "target": "fangsuo", "label": "书店航线" },
+    { "source": "alai_book", "target": "comic_man", "label": "书店航线" },
+    { "source": "kuwen_book", "target": "mamenxi_lib", "label": "图书馆链路" },
+    { "source": "sf_world_mag", "target": "eight_light_min", "label": "出版矩阵" },
+    { "source": "sf_world_mag", "target": "yixing_culture", "label": "出版矩阵" },
+    { "source": "eight_light_min", "target": "starfish_create", "label": "出版矩阵" },
+    { "source": "jinsha_museum", "target": "sc_tech_museum", "label": "博物通道" },
+    { "source": "cd_sf_museum", "target": "sf_world_exhibit", "label": "科幻展览带" },
+    { "source": "sf_world_exhibit", "target": "three_body_space", "label": "科幻展览带" },
+    { "source": "three_body_space", "target": "scifi_space_1", "label": "南部遗迹" },
+    { "source": "iron_moon", "target": "kuwen_book", "label": "湮灭遗迹" },
+    { "source": "scifi_space_1", "target": "cafe_42", "label": "旧补给站" },
+    { "source": "sf_world_mag", "target": "wuhou_lib", "label": "文献纽带" }
+  ]
+}
