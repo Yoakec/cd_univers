@@ -54,7 +54,7 @@ let nodeDataMap: Map<string, Node3DState>
 let labelMap: Map<string, any>
 let focusedNodePos: THREE.Vector3 | null = null
 let cameraState: CameraStateMachine
-let interactionDispose: () => void
+let interactionDispose: { dispose: () => void }
 
 onMounted(async () => {
   if (!canvasContainer.value || !css2dContainer.value) return
@@ -200,7 +200,7 @@ watch(() => props.resetSignal, () => {
 onUnmounted(() => {
   cancelAnimationFrame(animationId)
   window.removeEventListener('resize', onResize)
-  interactionDispose?.()
+  interactionDispose?.dispose()
   cameraState?.dispose()
   controls?.dispose()
   renderer?.dispose()

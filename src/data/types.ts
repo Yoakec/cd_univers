@@ -40,8 +40,6 @@ export interface Node3DState {
   type: NodeType
   symbol: string
   position: { x: number; y: number; z: number }
-  sprite?: THREE.Sprite
-  label?: CSS2DObject
 }
 
 export type CameraMode = 'FREE_ROAM' | 'FLY_TO' | 'LOCKED'
