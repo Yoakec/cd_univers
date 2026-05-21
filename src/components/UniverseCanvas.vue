@@ -25,6 +25,7 @@ const emit = defineEmits<{
   (e: 'hover-node', nodeId: string | null): void
   (e: 'focus-node', nodeId: string): void
   (e: 'camera-mode-change', mode: CameraMode): void
+  (e: 'focused-node-screen-pos', pos: { x: number; y: number }): void
 }>()
 
 const props = defineProps<{
@@ -51,6 +52,7 @@ let nodeSpriteMap: Map<string, THREE.Sprite>
 let nodeDataMap: Map<string, Node3DState>
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 let labelMap: Map<string, any>
+let focusedNodePos: THREE.Vector3 | null = null
 let cameraState: CameraStateMachine
 let interactionDispose: () => void
 
@@ -126,6 +128,9 @@ onMounted(async () => {
   // Camera state machine
   cameraState = createCameraStateMachine(camera, controls, (mode) => {
     emit('camera-mode-change', mode)
+    if (mode === 'FREE_ROAM') {
+      focusedNodePos = null
+    }
   })
 
   // Interaction (hover + click)
@@ -137,7 +142,8 @@ onMounted(async () => {
         emit('focus-node', nodeId)
         const node = nodeDataMap.get(nodeId)
         if (node) {
-          cameraState.flyTo(new THREE.Vector3(node.position.x, node.position.y, node.position.z))
+          focusedNodePos = new THREE.Vector3(node.position.x, node.position.y, node.position.z)
+          cameraState.flyTo(focusedNodePos)
         }
       },
       onClickEmpty: () => {
@@ -168,6 +174,14 @@ onMounted(async () => {
       const dist = camera.position.distanceTo(label.position)
       const opacity = Math.max(0.1, Math.min(1, 1 - (dist - 20) / 250))
       label.element.style.opacity = String(opacity)
+    }
+
+    // Project focused node to screen in LOCKED mode
+    if (cameraState.getMode() === 'LOCKED' && focusedNodePos) {
+      const vec = focusedNodePos.clone().project(camera)
+      const screenX = (vec.x * 0.5 + 0.5) * window.innerWidth
+      const screenY = (-vec.y * 0.5 + 0.5) * window.innerHeight
+      emit('focused-node-screen-pos', { x: screenX, y: screenY })
     }
 
     composer.render()
