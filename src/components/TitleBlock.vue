@@ -1,6 +1,9 @@
 <template>
-  <div class="title-block">
-    <h1 class="title-main">成都科幻地图</h1>
+  <div class="title-block" :class="{ mobile: isMobile }">
+    <div class="title-row">
+      <h1 class="title-main">成都科幻地图</h1>
+      <button v-if="isMobile" class="legend-toggle-btn" @click="$emit('toggle-legend')">ⓘ</button>
+    </div>
     <p class="title-sub">CHENGDU SCIENCE FICTION MAP</p>
     <div class="title-rule"></div>
     <div class="credits">
@@ -27,6 +30,16 @@
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+defineProps<{
+  isMobile: boolean
+}>()
+
+defineEmits<{
+  (e: 'toggle-legend'): void
+}>()
+</script>
 
 <style scoped>
 .title-block {
@@ -75,5 +88,46 @@
 .credit-name {
   color: #D4CFBA;
   letter-spacing: 0.15em;
+}
+.title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.legend-toggle-btn {
+  background: transparent;
+  border: 1px solid rgba(253, 245, 230, 0.25);
+  color: #FDF5E6;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 2px 6px;
+  line-height: 1;
+}
+
+@media (max-width: 479px) {
+  .title-block {
+    bottom: 12px;
+    left: 10px;
+  }
+  .title-main {
+    font-size: 18px;
+  }
+  .title-sub {
+    font-size: 8px;
+    margin: 2px 0 6px 0;
+    letter-spacing: 0.2em;
+  }
+  .title-rule {
+    width: 40px;
+    margin-bottom: 6px;
+  }
+  .credit-line {
+    font-size: 8px;
+    gap: 6px;
+    line-height: 1.4;
+  }
+  .credit-role {
+    min-width: 48px;
+  }
 }
 </style>

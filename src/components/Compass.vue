@@ -1,5 +1,5 @@
 <template>
-  <div class="compass">
+  <div class="compass" :class="{ mobile: isMobile }" @click="onCompassClick">
     <div class="compass-outer-ring"></div>
     <div class="compass-inner-ring"></div>
     <div class="compass-octagram"></div>
@@ -14,9 +14,19 @@
 </template>
 
 <script setup lang="ts">
-defineEmits<{
+const props = defineProps<{
+  isMobile: boolean
+}>()
+
+const emit = defineEmits<{
   (e: 'reset-camera'): void
 }>()
+
+function onCompassClick() {
+  if (props.isMobile) {
+    emit('reset-camera')
+  }
+}
 </script>
 
 <style scoped>
@@ -117,5 +127,37 @@ defineEmits<{
 .reset-btn:hover {
   border-color: #FFD700;
   text-shadow: 0 0 12px rgba(255, 215, 0, 0.7);
+}
+
+/* Mobile styles */
+@media (max-width: 479px) {
+  .compass {
+    right: 10px;
+    top: 10px;
+    width: 64px;
+    height: 64px;
+  }
+  .compass-outer-ring {
+    width: 64px;
+    height: 64px;
+  }
+  .compass-inner-ring {
+    width: 46px;
+    height: 46px;
+  }
+  .compass-octagram {
+    width: 26px;
+    height: 26px;
+  }
+  .compass-label {
+    font-size: 8px;
+  }
+  .label-n { top: 3px; }
+  .label-s { bottom: 3px; }
+  .label-w { left: 3px; }
+  .label-e { right: 3px; }
+  .reset-btn {
+    display: none;
+  }
 }
 </style>

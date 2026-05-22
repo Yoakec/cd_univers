@@ -1,6 +1,6 @@
 <template>
   <svg
-    v-if="from && to"
+    v-if="!isMobile && from && to"
     class="connector-svg"
     :viewBox="`0 0 ${width} ${height}`"
   >
@@ -19,6 +19,7 @@
 import { computed } from 'vue'
 
 const props = defineProps<{
+  isMobile: boolean
   from: { x: number; y: number } | null
   to: { x: number; y: number } | null
 }>()

@@ -30,6 +30,7 @@ const emit = defineEmits<{
 
 const props = defineProps<{
   resetSignal: number
+  isMobile: boolean
 }>()
 
 const canvasContainer = ref<HTMLElement | null>(null)
@@ -152,7 +153,8 @@ onMounted(async () => {
         cameraState.setMode('FREE_ROAM')
         }
       },
-    }
+    },
+    props.isMobile
   )
 
   // Post-processing

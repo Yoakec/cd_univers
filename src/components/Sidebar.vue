@@ -1,5 +1,5 @@
 <template>
-  <aside class="sidebar" :class="{ collapsed: !visible }">
+  <aside class="sidebar" :class="{ collapsed: !visible, mobile: isMobile }">
     <button class="sidebar-toggle" @click="visible = !visible">
       {{ visible ? '◁' : '▷' }}
     </button>
@@ -46,6 +46,7 @@ import type { DataNode, NodeType } from '@/data/types'
 const props = defineProps<{
   nodes: DataNode[]
   hoveredNodeId: string | null
+  isMobile: boolean
 }>()
 
 defineEmits<{
@@ -53,7 +54,7 @@ defineEmits<{
   (e: 'focus-node', id: string): void
 }>()
 
-const visible = ref(true)
+const visible = ref(!props.isMobile)
 const searchQuery = ref('')
 
 const typeLabels: Record<string, string> = {
@@ -222,5 +223,58 @@ const groupedNodes = computed(() => {
   text-align: center;
   color: #D4CFBA;
   font-size: 12px;
+}
+
+/* Mobile compact sidebar */
+@media (max-width: 479px) {
+  .sidebar {
+    top: 10px;
+    left: 10px;
+    min-width: auto;
+    max-width: 200px;
+    max-height: 42vh;
+  }
+  .sidebar.collapsed {
+    min-width: auto;
+    max-width: auto;
+  }
+  .sidebar-toggle {
+    right: -24px;
+    top: 0;
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+  .sidebar-content {
+    max-height: 42vh;
+  }
+  .search-box {
+    padding: 8px;
+  }
+  .search-input {
+    font-size: 10px;
+    padding: 5px 8px;
+  }
+  .type-header {
+    font-size: 9px;
+    padding: 4px 8px 2px;
+  }
+  .node-item {
+    padding: 3px 8px;
+    gap: 4px;
+  }
+  .node-symbol {
+    font-size: 11px;
+    width: 14px;
+  }
+  .node-name {
+    font-size: 10px;
+  }
+  .node-address {
+    font-size: 8px;
+  }
+  .no-results {
+    font-size: 10px;
+    padding: 12px;
+  }
 }
 </style>

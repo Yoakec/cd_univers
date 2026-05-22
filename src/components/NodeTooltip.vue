@@ -2,12 +2,15 @@
   <div
     v-if="node"
     class="tooltip"
-    :class="{ 'tooltip-locked': mode === 'locked' }"
+    :class="{
+      'tooltip-locked': mode === 'locked',
+      'tooltip-mobile': mode === 'mobile'
+    }"
     :style="tooltipStyle"
   >
     <div class="tooltip-name">{{ node.name }}</div>
     <div class="tooltip-address">{{ node.address }}</div>
-    <div v-if="mode === 'locked'" class="tooltip-actions">
+    <div v-if="mode === 'locked' || mode === 'mobile'" class="tooltip-actions">
       <button
         v-if="node.type !== 'LOST_PLACE'"
         class="nav-btn"
@@ -33,10 +36,12 @@ import type { DataNode } from '@/data/types'
 const props = defineProps<{
   node: DataNode | null
   screenPos: { x: number; y: number } | null
-  mode?: 'hover' | 'locked'
+  mode?: 'hover' | 'locked' | 'mobile'
+  isMobile?: boolean
 }>()
 
 const tooltipStyle = computed(() => {
+  if (props.mode === 'mobile') return {}
   if (!props.screenPos) return { display: 'none' }
   return {
     left: `${props.screenPos.x + 20}px`,
@@ -109,5 +114,22 @@ function openAmap() {
 }
 .nav-btn-disabled:hover {
   background: transparent;
+}
+
+/* Mobile bottom panel */
+.tooltip-mobile {
+  top: auto;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-width: none;
+  padding: 14px 16px;
+  z-index: 70;
+  box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.2s ease;
+}
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
 }
 </style>

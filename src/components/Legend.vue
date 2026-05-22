@@ -1,5 +1,5 @@
 <template>
-  <div class="legend">
+  <div v-if="visible" class="legend" :class="{ mobile: isMobile }">
     <div class="legend-title">LEGEND · 图例</div>
     <div class="legend-grid">
       <div v-for="item in legendItems" :key="item.symbol" class="legend-row">
@@ -11,6 +11,11 @@
 </template>
 
 <script setup lang="ts">
+defineProps<{
+  visible: boolean
+  isMobile: boolean
+}>()
+
 const legendItems = [
   { symbol: '✦', label: '宇宙中心 TUOCON', color: '#FFD700' },
   { symbol: '＊', label: '高校科幻协会', color: '#F8E8C0' },
@@ -68,5 +73,26 @@ const legendItems = [
   font-size: 10px;
   color: #F5F1E1;
   white-space: nowrap;
+}
+
+@media (max-width: 479px) {
+  .legend {
+    bottom: 60px;
+    right: 12px;
+    min-width: auto;
+    padding: 10px 14px;
+  }
+  .legend-title {
+    font-size: 10px;
+    margin-bottom: 6px;
+    padding-bottom: 4px;
+  }
+  .legend-symbol {
+    font-size: 12px;
+    width: 14px;
+  }
+  .legend-label {
+    font-size: 9px;
+  }
 }
 </style>
