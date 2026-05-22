@@ -125,6 +125,7 @@ function openAmap() {
   max-width: none;
   padding: 14px 16px;
   z-index: 70;
+  pointer-events: auto;
   box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.3);
   animation: slideUp 0.2s ease;
 }

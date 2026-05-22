@@ -1,7 +1,7 @@
 ## MODIFIED Requirements
 
 ### Requirement: Sidebar with search and node list
-The system SHALL provide a fixed sidebar component containing a search input field and a scrollable, filterable list of all 43 nodes grouped by type, with click-to-navigate functionality. On viewports below 480px, the sidebar SHALL render as a full-width overlay drawer triggered by a hamburger button, hidden off-screen by default and sliding in on demand.
+The system SHALL provide a fixed sidebar component containing a search input field and a scrollable, filterable list of all 43 nodes grouped by type, with click-to-navigate functionality. On viewports below 480px, the sidebar SHALL render in compact mode: reduced width (max 200px), reduced height (max 42vh), smaller fonts, and collapsed by default with the toggle button still functional.
 
 #### Scenario: Sidebar displays all nodes grouped by type
 - **WHEN** the application loads
@@ -19,27 +19,27 @@ The system SHALL provide a fixed sidebar component containing a search input fie
 - **WHEN** the sidebar renders
 - **THEN** it uses `rgba(0, 10, 22, 0.88)` background, `1px solid rgba(253, 245, 230, 0.25)` border, no gradients or shadows
 
-#### Scenario: Mobile sidebar is a hamburger-triggered drawer
+#### Scenario: Mobile sidebar is compact and collapsible
 - **WHEN** the application renders on a <480px viewport
-- **THEN** the sidebar is hidden off-screen and a hamburger button (☰) appears in the top-left; tapping the button slides the sidebar in from the left as a full-width overlay
+- **THEN** the sidebar is collapsed by default, renders at max 200px wide and 42vh when expanded, with reduced fonts and spacing
 
 ### Requirement: Title block with crew credits
-The system SHALL render a fixed bottom-left title block displaying "成都科幻地图" in large bold type, the English subtitle "CHENGDU SCIENCE FICTION MAP", and crew credits with themed titles (指挥官, 领航员, 安全顾问, 医疗顾问, 制图顾问). On viewports below 480px, only the main title SHALL render with a ⓘ toggle button for the Legend; the subtitle and credits SHALL be omitted.
+The system SHALL render a fixed bottom-left title block displaying "成都科幻地图" in large bold type, the English subtitle "CHENGDU SCIENCE FICTION MAP", and crew credits with themed titles (指挥官, 领航员, 安全顾问, 医疗顾问, 制图顾问). On viewports below 480px, the full content SHALL render with reduced font sizes and tighter spacing, plus a ⓘ toggle button for the Legend.
 
 #### Scenario: Title block displays main title
 - **WHEN** the application loads
 - **THEN** "成都科幻地图" is visible in the bottom-left corner in large bold font
 
 #### Scenario: Crew credits use themed role titles
-- **WHEN** the title block renders on a ≥480px viewport
+- **WHEN** the title block renders
 - **THEN** crew member names are listed with sci-fi themed role titles (指挥官, 领航员, etc.) rather than standard credits
 
-#### Scenario: Mobile title is simplified with legend toggle
+#### Scenario: Mobile title block is scaled down
 - **WHEN** the title block renders on a <480px viewport
-- **THEN** only "成都科幻地图" is shown, with a ⓘ button that toggles the Legend panel visibility
+- **THEN** the full title block (title ~18px, subtitle ~8px, credits ~8px) is shown with a ⓘ button that toggles Legend visibility
 
 ### Requirement: Compass rose
-The system SHALL render a fixed compass rose as pure CSS art, featuring concentric geometric rings, an octagram star, and N/S/W/E cardinal direction labels in `#FFD700`. On viewports below 480px, the compass SHALL scale to approximately 64×64px and reposition to the top-left area. Tapping the compass on mobile SHALL trigger camera reset.
+The system SHALL render a fixed compass rose as pure CSS art, featuring concentric geometric rings, an octagram star, and N/S/W/E cardinal direction labels in `#FFD700`. On viewports below 480px, the compass SHALL scale to approximately 64×64px while remaining in the top-right corner. Tapping the compass on mobile SHALL trigger camera reset.
 
 #### Scenario: Compass displays cardinal directions
 - **WHEN** the application loads
@@ -49,9 +49,9 @@ The system SHALL render a fixed compass rose as pure CSS art, featuring concentr
 - **WHEN** the compass renders
 - **THEN** all rings, stars, and markers are created with CSS borders, clip-paths, and pseudo-elements — no background images or external SVGs
 
-#### Scenario: Compass scales and repositions on mobile
+#### Scenario: Compass scales on mobile
 - **WHEN** the application renders on a <480px viewport
-- **THEN** the compass renders at 64×64px scale, positioned near the top-left (next to the hamburger button), and tapping it resets the camera
+- **THEN** the compass renders at 64×64px scale in the top-right corner, and tapping it resets the camera
 
 ### Requirement: Legend panel
 The system SHALL render a fixed bottom-right legend panel displaying all node type symbols with labels, organized in a grid with 1px solid `#FDF5E6` dividing lines. On viewports below 480px, the legend SHALL be hidden by default and toggled via the ⓘ button on the simplified TitleBlock.
